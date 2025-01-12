@@ -1,0 +1,51 @@
+  %Givendata
+  %Q=30000;%Flowrateinm³/day
+  Q=Q/(24*3600); %Convert flowrate to m³/s
+  target_efficiency = 0.85; % Target efficiency
+  d=0.01e-3; %Particle diameter in meters
+  rho_p = 2.65 * 1e3; % Particle density in kg/m³
+  rho_w = 1e3; % Water density in kg/m³
+  g =9.81; %Gravitational acceleration in m/s²
+  nu = 1.002e-6; % Kinematic viscosity of water in m²/s
+  mu =nu*rho_w;%Dynamicviscosityof water in kg/(m·s)
+ 
+  %Calculate settling velocity using Stokes' Law
+  V_s =(g* (rho_p- rho_w) * d^2) / (18 *mu);
+ 
+  % Tankdimensions
+  W=15;%Widthinmeters (max allowed)
+  L = Q/(W*V_s);%Lengthinmeters
+  D=V_s*L/Q;%Depthinmeters
+ 
+  %Overflow rate
+  V_0 =Q/(L*W);%Overflowrate inm/s
+ 
+  %Efficiency calculation
+  actual_efficiency = V_s / V_0;
+
+. %Plotting particle size vs. settling time for various depths
+  particle_sizes = linspace(0.001, 0.02, 100); % Particle sizes from 0.001 mm to 0.02 mm
+  settling_times =zeros(size(particle_sizes));
+ 
+  for i = 1:length(particle_sizes)
+ 
+ d_i = particle_sizes(i) * 1e-3; % Convert to meters
+ 
+ 
+ V_s_i = (g * (rho_p- rho_w) * d_i^2) / (18 * mu); % Settling velocity
+ settling_times(i) = D / V_s_i; % Settling time
+  end
+ 
+  figure;
+  plot(particle_sizes, settling_times);
+  xlabel('Particle Size (mm)');
+ ylabel('Settling Time (s)');
+  title('Particle Size vs. Settling Time for Various Tank Depths');
+  grid on;
+ 
+  %Display results
+  fprintf('Tank Width (W): %.2f m\n', W);
+  fprintf('Tank Length (L): %.2f m\n', L);
+  fprintf('Tank Depth (D): %.2f m\n', D);
+  fprintf('Overflow Rate (V₀): %.2e m/s\n', V_0);
+ fprintf('Actual Efficiency: %.2f %%\n', actual_efficiency * 100);
