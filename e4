@@ -1,0 +1,34 @@
+ 1.Create a MATLAB script to write the following data to a text file named data.txt:
+ 10 20 30
+ 40 50 60
+ 70 80 90
+
+ Solution:
+ %Write data to a file
+ fileID = fopen('data.txt', 'w'); % Open file for writing
+ fprintf(fileID, '%d %d %d\n', [10, 20, 30; 40, 50, 60; 70, 80, 90]');
+ fclose(fileID); % Close the file
+ %Read data from the file
+ fileID = fopen('data.txt', 'r'); % Open file for reading
+ data = fscanf(fileID, '%d', [3, inf]); % Read data into a 3xN matrix
+ fclose(fileID); % Close the file
+ %Transpose the data for proper display
+ data = data';
+ %Display the data
+ disp('Data read from the file:');
+ disp(data);
+
+2.Solve the following symbolic equation using MATLAB:
+ 2x2+3x−5=02x^2 + 3x- 5 = 02x2+3x−5=0
+ Find the roots of the equation.
+
+ Solution:
+ %Define thesymbolic variable
+ syms x
+%Define the equation
+ eqn = 2*x^2 + 3*x- 5 == 0;
+ %Solve the equation
+ solutions = solve(eqn, x);
+ %Display the solutions
+ disp('The roots of the equation 2x^2 + 3x- 5 = 0 are:');
+ disp(solutions);
