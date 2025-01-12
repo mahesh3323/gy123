@@ -1,0 +1,41 @@
+ PROBLEMSTATEMENT1
+ Date:
+ PRACTISEPROBLEMI:Anoilof specific gravity 0.7 is flowing through a pipe of diameter 300mm at
+ the rate of 500 litres/s. Find the head lost due to friction and power required to maintain the flow for a length
+ of 1000 m. Take kinematic viscosity =0.29 stokes
+
+ MATLABSOLUTION:
+ >>%Givendata
+ specific_gravity = 0.7;
+ diameter_mm = 300; % diameter in mm
+ flow_rate_lps = 500; % flow rate in litres per second
+ length_m = 1000; % length in meters
+ kinematic_viscosity_stokes = 0.29; % kinematic viscosity in stokes
+ %Convertunits
+ diameter_m = diameter_mm / 1000; % diameter in meters
+ flow_rate_m3s = flow_rate_lps / 1000; % flow rate in cubic meters per second
+ kinematic_viscosity_m2s = kinematic_viscosity_stokes * 1e-4; % kinematic viscosity in m^2/s
+ %Calculate velocity
+ area = pi * (diameter_m / 2)^2; % cross-sectional area in m^2
+ velocity = flow_rate_m3s / area; % velocity in m/s
+ %Calculate Reynolds number
+ density_oil = specific_gravity * 1000; % density in kg/m^3 (assuming water density is 1000 kg/m^3)
+ reynolds_number = (velocity * diameter_m) / kinematic_viscosity_m2s;
+ %Determinefriction factor (using Blasius equation for turbulent flow)
+ if reynolds_number < 2300
+ %Laminar flow
+ friction_factor = 64 / reynolds_number;
+ else
+ %Turbulent flow
+ friction_factor = 0.079 / (reynolds_number^0.25);
+ end
+ %Calculate head loss due to friction (Darcy-Weisbach equation)
+ head_loss = (4*friction_factor * length_m * velocity^2) / (2 * 9.81 * diameter_m); % head loss in meters
+ %Calculate power required to maintain the flow
+ power = density_oil * 9.81 * flow_rate_m3s * head_loss; % power in watts
+ %Display results
+ fprintf('Head loss due to friction: %.2f meters\n', head_loss);
+ fprintf('Power required to maintain the flow: %.2f watts\n', power);
+ Head loss due to friction: 163.32 meters
+ Power required to maintain the flow: 560775.31 watts
+ >>
