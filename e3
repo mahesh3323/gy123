@@ -1,0 +1,52 @@
+1. Write a MATLABscriptto defineand plot a linear function y=2x+3y = 2x + 3y=2x+3for xxxvalues
+ ranging from-10 to 10. Label the axes and give the plot a title.
+
+Solution :
+ %Definethexrange
+ x =-10:1:10;
+ %Definethelinear function y = 2x + 3
+ y =2*x+3;
+ %Plotthefunction
+ figure;
+ plot(x, y, 'b-', 'LineWidth', 2);
+ grid on;
+ %Addlabelsandtitle
+ xlabel('x values');
+ ylabel('y = 2x + 3');
+ title('Plot of Linear Function y = 2x + 3');
+
+ 2.Write a MATLABscript todefine and plot a quadratic function y=x2−4x+5y = x^2- 4x +
+ 5y=x2−4x+5 for xxx values ranging from-5 to 5. Add grid lines, labels, and a title.
+
+ Solution :
+ %Definethexrange
+ x =-5:0.1:5;
+ %Definethequadratic function y = x^2- 4x +5
+ y =x.^2- 4*x + 5;
+ %Plotthefunction
+ figure;
+ plot(x, y, 'r-', 'LineWidth', 2);
+ grid on;
+ %Addlabels and title
+ xlabel('x values');
+ ylabel('y = x^2- 4x + 5');
+ title('Plot of Quadratic Function y = x^2- 4x + 5');
+
+3.Write a MATLABscript to create a 3D surface plot for thefunction z=x2+y2z = x^2 +
+ y^2z=x2+y2 over the range x=−5x =-5x=−5 to 555 and y=−5y =-5y=−5 to 555.
+
+Solution :
+ %Define x andy ranges
+ [x, y] = meshgrid(-5:0.5:5,-5:0.5:5);
+ %Definethefunction z= x^2 +y^2
+ z =x.^2 + y.^2;
+ %Createasurfaceplot
+ figure;
+ surf(x, y, z);
+ %Addlabels,title, andcolorbar
+ xlabel('x values');
+ ylabel('y values');
+ zlabel('z = x^2 + y^2');
+ title('3D Surface Plot of z = x^2 + y^2');
+ colorbar;
+
