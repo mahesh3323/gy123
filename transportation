@@ -8,3 +8,16 @@
 %Calculate the radius of the curve R=(v_mps^2) / (g * (e + f));
  %Display the result fprintf('The minimum radius of the horizontal curve is
  %.2f meters.\n', R);
+
+ PRACTISE PROBLEMII: Computethesuperelevation needed for a vehicle travelling at
+ a speed of 60 kmph on a curve of radius 128 m on a surface with a coefficient of friction of
+ 0.15
+
+ %GivenData
+ velocity = 60;
+ f =0.15;%coefficient of friction
+ radius = 128; % in m
+ %super velvation calculation
+ e=((velocity^2)/(127*radius))-f;
+ %Display results
+ fprintf('super evevation: %.4f meters\n', e);
