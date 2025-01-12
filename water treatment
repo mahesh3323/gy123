@@ -1,0 +1,45 @@
+ %Basic Water Treatment Unit Design for Indian Conditions
+ %Written for simplified modeling of sedimentation, filtration, and disinfection
+ %Input Parameters for a small community
+ population = 1000; % Population of the area
+ per_capita_demand = 135; % LPCD (Liters per capita per day)
+ water_demand = population * per_capita_demand; % Total daily water demand in Liters
+ Q=water_demand / 86400; % Flow rate in cubic meters per second (L/s to m^3/s)
+ %1.Sedimentation Tank Design
+ %Assumptions: Rectangular sedimentation tank with a surface loading rate
+ surface_loading_rate = 1.0 / 86400; % Surface loading rate (m/s), typical value: 1-1.5 m^3/m^2/day
+ surface_area_sed = Q / surface_loading_rate; % Surface area of sedimentation tank (m^2)
+ depth_sed = 3; % Depth of sedimentation tank in meters (typical range 2-4 m)
+ volume_sed = surface_area_sed * depth_sed; % Volume of the sedimentation tank (m^3)
+ retention_time_sed = volume_sed / Q; % Hydraulic retention time (s)
+ disp('Sedimentation Tank Design:')
+ disp(['Surface Area: ', num2str(surface_area_sed), ' m^2']);
+ disp(['Volume: ', num2str(volume_sed), ' m^3']);
+ disp(['Retention Time: ', num2str(retention_time_sed / 3600), ' hours']);
+ %2.Filtration Unit Design
+ %Assumptions: Rapid Sand Filter
+ filter_rate = 5 / 86400; % Filtration rate in m/s, typical value: 5-15 m/h (converted to m/s)
+ surface_area_filter = Q / filter_rate; % Surface area of filter (m^2)
+ depth_filter = 1.5; % Depth of the filter (typical range 0.6-1.8 m)
+ volume_filter = surface_area_filter * depth_filter; % Filter volume (m^3)
+ disp('Filtration Unit Design:')
+ disp(['Surface Area: ', num2str(surface_area_filter), ' m^2']);
+ disp(['Volume: ', num2str(volume_filter), ' m^3']);
+ %3.Disinfection Unit Design
+ %Assumptions: Chlorination for disinfection
+ dose_chlorine = 3; % Chlorine dose in mg/L (typical dose 1-5 mg/L)
+ contact_time = 30 * 60; % Contact time in seconds (30 minutes typical)
+ tank_volume_disinfection = Q * contact_time; % Volume of disinfection tank (m^3)
+ chlorine_required = dose_chlorine * water_demand * 1e-3; % Total chlorine required per day in grams
+ disp('Disinfection Unit Design:')
+ disp(['Volume of Disinfection Tank: ', num2str(tank_volume_disinfection), ' m^3']);
+ disp(['Chlorine Required: ', num2str(chlorine_required), ' grams per day']);
+ %Summaryof Design
+ disp('Water Treatment Unit Design Summary:')
+ disp(['Total Water Demand: ', num2str(water_demand), ' Liters per day']);
+ disp(['Flow Rate: ', num2str(Q), ' m^3/s']);
+ disp(['Sedimentation Tank Surface Area: ', num2str(surface_area_sed), ' m^2']);
+ disp(['Filter Surface Area: ', num2str(surface_area_filter), ' m^2']);
+ disp(['Chlorine Dose: ', num2str(dose_chlorine), ' mg/L']);
+ disp(['Disinfection Tank Volume: ', num2str(tank_volume_disinfection), ' m^3']);
+ disp(['Total Chlorine Required: ', num2str(chlorine_required), ' grams per day']);
