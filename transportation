@@ -1,0 +1,10 @@
+ %Given parameters v_kmph = 40;
+ %speed in km/h e =0.1;
+ %superelevation (1 in 10) f = 0.16;
+ %coefficient of lateral friction
+ %Convert speed to m/s v_mps = v_kmph * (1000/3600);
+ %Acceleration due to gravity g =9.81;
+ %m/s^2
+%Calculate the radius of the curve R=(v_mps^2) / (g * (e + f));
+ %Display the result fprintf('The minimum radius of the horizontal curve is
+ %.2f meters.\n', R);
