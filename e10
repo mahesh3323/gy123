@@ -1,0 +1,51 @@
+(1) A partially saturated soil sample collected from an earth fill has a natural moisture
+ content of 23 % and a unit weight of 19.6 kN/m3. If the specific gravity of the soil is 2.65,
+ calculate
+ a. Void ratio
+ b. Degree of saturation
+ c. Saturated unit weight
+
+ Matlab code
+ %Given data
+ w=0.23; % moisture content (23%)
+ gamma=19.6; %unitweight (kN/m^3)
+ G=2.65; % specific gravity
+ %Calculate dry unit weight
+ gamma_d=gamma/(1+w);
+ %Calculate void ratio
+ e =(G*w)/(gamma_d /9.81)- 1; % converting gamma_d to kN/m^3
+ %Calculate degree of saturation
+ S =(w*G)/e;
+ %Calculate saturated unit weight
+ gamma_sat = gamma_d * (1+ e);
+
+ %Display results
+ fprintf('Void Ratio (e): %.4f\n', e);
+ fprintf('Degree of Saturation (S): %.4f\n', S);
+ fprintf('Saturated Unit Weight (gamma_sat): %.4f kN/m^3\n', gamma_sat);
+
+2}
+Asoil sample in dry state weighs 400 g and has a volume of 250 cm3. Calculate the shrinkage
+ limit and void ratio of the sample if the specific gravity is 2.67.
+
+ %Given data
+ Ms=400;%Dryweight ofsoil sample in grams
+ V=250; %Volume ofsoil sample in cm^3
+ G=2.67; %Specific gravity of soil solids
+ rho_w = 1; %Unit weight of water in g/cm^3
+ %Calculating dry density (ρd)
+ rho_d = Ms / V; %in g/cm^3
+ %Calculating void ratio (e)
+ e = (G/ rho_d)- 1;
+ %Calculating volume of solids (Vs)
+ Vs =Ms/(G*rho_w);
+ %Calculating weight of water (Mw)
+ Mw=(V-Vs)*rho_w;
+ %Calculating shrinkage limit
+ Shrinkage_limit = (Mw / Ms) * 100;
+ %Display results
+ fprintf('Dry density (ρd): %.2f g/cm^3\n', rho_d);
+ fprintf('Void ratio (e): %.2f\n', e);
+ fprintf('Volume of solids (Vs): %.2f cm^3\n', Vs);
+ fprintf('Weight of water (Mw): %.2f g\n', Mw);
+ fprintf('Shrinkage limit: %.2f%%\n', Shrinkage_limit)
