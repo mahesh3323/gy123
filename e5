@@ -1,0 +1,33 @@
+ 1.Write MATLAB code to perform the following:
+ Addition of two numbers: x = 15, y = 5
+ Multiplication of two numbers: a = 7, b = 3
+ Subtraction of two numbers: m = 20, n = 8
+
+ MATLABCode:
+ x =15;
+ y =5;
+ sum_result = x + y; % Addition
+ a = 7;
+ b =3;
+ mul_result = a * b; % Multiplication
+ m=20;
+ n =8;
+ sub_result = m- n; % Subtraction
+ %Display results
+ disp(['Sum: ', num2str(sum_result)]);
+ disp(['Multiplication: ', num2str(mul_result)]);
+ disp(['Subtraction: ', num2str(sub_result)]);
+
+ 1.Write MATLAB codeto perform element-wise multiplication and division on two arrays
+ A=[10, 20, 30] and B = [2, 4, 5].
+ MATLABCode:
+ A=[10, 20, 30];
+ B=[2, 4, 5];
+ %Element-wise multiplication and division
+ mul_result = A .* B; % Element-wise multiplication
+ div_result = A ./ B; % Element-wise division
+ %Display results
+ disp('Element-wise multiplication:');
+ disp(mul_result);
+ disp('Element-wise division:');
+ disp(div_result);
