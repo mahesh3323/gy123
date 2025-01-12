@@ -1,0 +1,22 @@
+ PRACTISEPROBLEMII:
+ Ahorizontal water pipe has an abrupt enlargement such that the diameters
+ of small and large cross-section are 250 mm and 450 mm respectively. The volumetric flow rate in pipe is
+ 0.3 m3/s. Find the head loss due to abrupt enlargement
+
+ %Given Data
+ D1 =0.25; % Diameter of the small section in meters
+ D2 =0.45; % Diameter of the large section in meters
+ Q=0.3; % Volumetric flow rate in m³/s
+ %Cross-sectional areas
+ A1 =pi *(D1^2) / 4;
+ A2 =pi *(D2^2) / 4;
+ % Velocities
+ V1 =Q/A1;
+ V2 =Q/A2;
+ %Head loss due to abrupt enlargement
+ g =9.81; %Acceleration due to gravity in m/s²
+ hl = ((V1- V2)^2) / (2 * g);
+ %Display results
+ fprintf('Head loss due to abrupt enlargement: %.4f meters\n', hl);
+ >> horizontalwater
+ Head loss due to abrupt enlargement: 0.9099 meters
